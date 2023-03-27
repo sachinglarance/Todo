@@ -24,7 +24,6 @@ const displayTasks = () => {
 
 // Fetching values in localstorage
   let tasks = Object.keys(localStorage);
-  tasks = tasks.sort();
   for (let key of tasks) {
     let taskInnerDiv = document.createElement("div");
     taskInnerDiv.classList.add("task");
@@ -121,7 +120,7 @@ document.querySelector("#push").addEventListener("click", () => {
   //Enable the edit button
   disableButtons(false);
   if (newInput.value.length == 0) {
-    alert("Please Enter A Task");
+    alert("You should enter a task");
   } else if (checkExistingTask(newInput.value, updateNote)) {
     alert("Task Already Exists!");
   } else {
