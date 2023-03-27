@@ -24,11 +24,11 @@ const displayTasks = () => {
 
 // Fetching values in localstorage
   let tasks = Object.keys(localStorage);
+  tasks = tasks.sort();
   for (let key of tasks) {
     let taskInnerDiv = document.createElement("div");
     taskInnerDiv.classList.add("task");
     taskInnerDiv.setAttribute("id", key);
-    // there is no elements thats why put 1. incase we put 0 means index values only printed.it is using key
     taskInnerDiv.innerHTML = `<span id="taskname">${key.split("_")[1]}</span>`;
     let editButton = document.createElement("button");
     editButton.classList.add("edit");
@@ -45,15 +45,13 @@ const displayTasks = () => {
      newInput.focus();
     // When you have js running on the same event of nested elements to stop being called.
       e.stopPropagation();
-      //disable other edit buttons when one task is being edited
       disableButtons(true);
-    //assigns the parent element of the edit button (which is the task element to the variable parent
+    //assigns the parent element of the edit button to the variable parent
       let parent = element.parentElement;
       // retrieves the current task name and assigns it to the value of the new input element.
       newInput.value = parent.querySelector("#taskname").innerText;
       //set updateNote to the task that is being edited
       updateNote = parent.id;
-      // Remove task
       parent.remove();
     });
   });
@@ -166,7 +164,7 @@ document.querySelector("#push").addEventListener("click", () => {
     toast.className = "show";
     toast.innerText = toastMessage;
     setTimeout(() => {
-      toast.className = toast.className.replace("show", "");
+      toast.className = toast.className.replace("show", toastMessage);
     }, 3000);
   }
   
