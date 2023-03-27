@@ -40,16 +40,16 @@ const displayTasks = () => {
   
 // Edit tasks
   editTasks = document.getElementsByClassName("edit");
-  Array.from(editTasks).forEach((element,   ) => {
+  Array.from(editTasks).forEach((element) => {
     element.addEventListener("click", (e) => {
      newInput.focus();
     // When you have js running on the same event of nested elements to stop being called.
       e.stopPropagation();
       //disable other edit buttons when one task is being edited
       disableButtons(true);
-      //update input value and remove div
+    //assigns the parent element of the edit button (which is the task element to the variable parent
       let parent = element.parentElement;
-      
+      // retrieves the current task name and assigns it to the value of the new input element.
       newInput.value = parent.querySelector("#taskname").innerText;
       //set updateNote to the task that is being edited
       updateNote = parent.id;
@@ -60,7 +60,7 @@ const displayTasks = () => {
 
   //Delete tasks
   deleteTasks = document.getElementsByClassName("delete");
-  Array.from(deleteTasks).forEach((element, index) => {
+  Array.from(deleteTasks).forEach((element) => {
     element.addEventListener("click", (e) => {
       e.stopPropagation();
       if(confirm("Are you sure to Delete?")==true){
