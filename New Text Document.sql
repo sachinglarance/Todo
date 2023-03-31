@@ -14,6 +14,26 @@
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
+
+-- Dumping database structure for school_management
+DROP DATABASE IF EXISTS `school_management`;
+CREATE DATABASE IF NOT EXISTS `school_management` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci */;
+USE `school_management`;
+
+-- Dumping structure for table school_management.score_details
+DROP TABLE IF EXISTS `score_details`;
+CREATE TABLE IF NOT EXISTS `score_details` (
+  `score_id` int(11) NOT NULL AUTO_INCREMENT,
+  `score` int(11) NOT NULL,
+  `student_id` int(11) DEFAULT NULL,
+  `sub_id` int(11) DEFAULT NULL,
+  PRIMARY KEY (`score_id`),
+  KEY `student_id` (`student_id`),
+  KEY `sub_id` (`sub_id`),
+  CONSTRAINT `score_details_ibfk_1` FOREIGN KEY (`student_id`) REFERENCES `student_details` (`student_id`),
+  CONSTRAINT `score_details_ibfk_2` FOREIGN KEY (`sub_id`) REFERENCES `subject_details` (`sub_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
 -- Dumping data for table school_management.score_details: ~10 rows (approximately)
 DELETE FROM `score_details`;
 INSERT INTO `score_details` (`score_id`, `score`, `student_id`, `sub_id`) VALUES
@@ -28,6 +48,14 @@ INSERT INTO `score_details` (`score_id`, `score`, `student_id`, `sub_id`) VALUES
 	(10, 68, 2, 4),
 	(11, 88, 2, 5);
 
+-- Dumping structure for table school_management.staff_details
+DROP TABLE IF EXISTS `staff_details`;
+CREATE TABLE IF NOT EXISTS `staff_details` (
+  `staff_id` int(11) NOT NULL AUTO_INCREMENT,
+  `staff_name` varchar(100) NOT NULL,
+  PRIMARY KEY (`staff_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
 -- Dumping data for table school_management.staff_details: ~5 rows (approximately)
 DELETE FROM `staff_details`;
 INSERT INTO `staff_details` (`staff_id`, `staff_name`) VALUES
@@ -37,6 +65,14 @@ INSERT INTO `staff_details` (`staff_id`, `staff_name`) VALUES
 	(4, 'lee'),
 	(5, 'dhivya');
 
+-- Dumping structure for table school_management.student_details
+DROP TABLE IF EXISTS `student_details`;
+CREATE TABLE IF NOT EXISTS `student_details` (
+  `student_id` int(11) NOT NULL AUTO_INCREMENT,
+  `student_name` varchar(200) NOT NULL,
+  PRIMARY KEY (`student_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
 -- Dumping data for table school_management.student_details: ~5 rows (approximately)
 DELETE FROM `student_details`;
 INSERT INTO `student_details` (`student_id`, `student_name`) VALUES
@@ -45,6 +81,18 @@ INSERT INTO `student_details` (`student_id`, `student_name`) VALUES
 	(3, 'naveen'),
 	(4, 'athiyaman'),
 	(5, 'vinoth');
+
+-- Dumping structure for table school_management.subject_details
+DROP TABLE IF EXISTS `subject_details`;
+CREATE TABLE IF NOT EXISTS `subject_details` (
+  `sub_id` int(11) NOT NULL AUTO_INCREMENT,
+  `sub_name` varchar(100) NOT NULL,
+  `staff_id` int(11) DEFAULT NULL,
+  PRIMARY KEY (`sub_id`),
+  UNIQUE KEY `sub_name` (`sub_name`),
+  KEY `staff_id` (`staff_id`),
+  CONSTRAINT `subject_details_ibfk_1` FOREIGN KEY (`staff_id`) REFERENCES `staff_details` (`staff_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- Dumping data for table school_management.subject_details: ~5 rows (approximately)
 DELETE FROM `subject_details`;
