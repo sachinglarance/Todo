@@ -16,7 +16,6 @@
 
 
 -- Dumping database structure for school_management
-DROP DATABASE IF EXISTS `school_management`;
 CREATE DATABASE IF NOT EXISTS `school_management` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci */;
 USE `school_management`;
 
@@ -32,9 +31,9 @@ CREATE TABLE IF NOT EXISTS `score_details` (
   KEY `sub_id` (`sub_id`),
   CONSTRAINT `score_details_ibfk_1` FOREIGN KEY (`student_id`) REFERENCES `student_details` (`student_id`),
   CONSTRAINT `score_details_ibfk_2` FOREIGN KEY (`sub_id`) REFERENCES `subject_details` (`sub_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=27 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
--- Dumping data for table school_management.score_details: ~10 rows (approximately)
+-- Dumping data for table school_management.score_details: ~25 rows (approximately)
 DELETE FROM `score_details`;
 INSERT INTO `score_details` (`score_id`, `score`, `student_id`, `sub_id`) VALUES
 	(1, 80, 1, 1),
@@ -46,7 +45,22 @@ INSERT INTO `score_details` (`score_id`, `score`, `student_id`, `sub_id`) VALUES
 	(8, 87, 2, 2),
 	(9, 79, 2, 3),
 	(10, 68, 2, 4),
-	(11, 88, 2, 5);
+	(11, 88, 2, 5),
+	(12, 87, 3, 1),
+	(13, 98, 3, 2),
+	(14, 66, 3, 3),
+	(15, 77, 3, 4),
+	(16, 83, 3, 5),
+	(17, 67, 4, 1),
+	(18, 98, 4, 2),
+	(19, 66, 4, 3),
+	(20, 59, 4, 4),
+	(21, 73, 4, 5),
+	(22, 86, 5, 1),
+	(23, 68, 5, 2),
+	(24, 80, 5, 3),
+	(25, 89, 5, 4),
+	(26, 90, 5, 5);
 
 -- Dumping structure for table school_management.staff_details
 DROP TABLE IF EXISTS `staff_details`;
