@@ -1,5 +1,5 @@
 
-const TaskDetails = require('./module/task_details')
+const TaskDetails = require('../module/task_details')
 
 
 const getAllTasks = async () => {
@@ -14,4 +14,4 @@ const getAllTasks = async () => {
     }
 }
 
-module.exports = getAllTasks;
+module.exports = {  getAllTasks: getAllTasks}

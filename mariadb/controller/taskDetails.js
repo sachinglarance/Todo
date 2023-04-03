@@ -1,5 +1,5 @@
 
-const taskDetailsDAO = require('./dao/askDetailsDAO');
+const taskDetailsDAO = require('../dao/askDetailsDAO');
 
 const getAllTasks = async () =>{
     try{
@@ -10,4 +10,6 @@ const getAllTasks = async () =>{
     }
 }
 
-module.exports = getAllTasks;
+module.exports = {
+    getAllTasks: getAllTasks
+}

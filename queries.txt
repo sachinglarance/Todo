@@ -1,7 +1,7 @@
  SELECT student_id, AVG(score) AS avg_score, RANK() OVER (ORDER BY AVG(score) DESC) AS rank
-    -> from score_details
-    -> GROUP BY student_id
-    -> order by rank;
+  from score_details
+  GROUP BY student_id
+  order by rank;
 
 
  select avg(score) as total
