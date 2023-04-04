@@ -15,6 +15,7 @@
     "http": "^0.0.1-security",
     "itbldz": "^2.0.53",
     "mariadb": "^3.1.1",
+    "nodemon": "^2.0.22",
     "sequelize": "^6.30.0"
   }
 }

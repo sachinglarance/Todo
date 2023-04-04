@@ -1,6 +1,5 @@
 const DataTypes = require("sequelize");
-const sequelize = require('../config/database');
-
+const sequelize = require("../config/database");
 
 const task_details = sequelize.define(
   "task_details",
@@ -21,8 +20,11 @@ const task_details = sequelize.define(
       references: {
         model: "user_details",
         key: "user_id",
-      }
+      },
     },
+  },
+  {
+    timestamps: false,
   },
   { tableName: "task_details" }
 );
